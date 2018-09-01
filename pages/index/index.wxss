@@ -1,0 +1,58 @@
+/**index.wxss**/
+
+.container {
+  position: absolute;
+  border: 10px inset yellow;
+  box-sizing:border-box;
+}
+
+.door {
+  position: absolute;
+  border-bottom: 20px solid white;
+}
+
+.person {
+  position: absolute;
+  border: 1rpx solid black;
+  box-sizing:border-box;
+}
+
+.caocao {
+  background-color: beige;
+}
+
+.guanyu {
+  background-color: blue;
+}
+
+.zhaoyun {
+  background-color: red;
+}
+
+.huangzhong {
+  background-color: pink;
+}
+
+.zhangfei {
+  background-color: green;
+}
+
+.machao {
+  background-color: aqua;
+}
+
+.footman1 {
+  background-color: blanchedalmond;
+}
+
+.footman2 {
+  background-color: cornflowerblue;
+}
+
+.footman3 {
+  background-color: darkgrey;
+}
+
+.footman4 {
+  background-color: fuchsia;
+}

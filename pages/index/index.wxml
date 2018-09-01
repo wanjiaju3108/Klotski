@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view wx:if="{{isPass}}">过关成功</view>
+<view class="container" style="left: {{wall.x - 10}}px; top: {{wall.y - 10}}px; width: {{wall.w + 20}}px; height: {{wall.h + 20}}px;">
+</view>
+<view class="door" style="left: {{wall.x + 0.25 * wall.w}}px; bottom: {{wall.y - 15}}px; width: {{0.5 * wall.w}}px; height: 30px;">
+</view>
+<view class="person caocao" id="0" style="left: {{wall.x + personPool.persons[0].x * unitLength}}px; top: {{wall.y + personPool.persons[0].y * unitLength}}px; width: {{personPool.persons[0].w * unitLength}}px; height: {{personPool.persons[0].h * unitLength}}px;border: {{border[0]}}rpx solid black;" bindtouchstart='ts' bindtouchmove='tm' bindtouchend='te'>
+</view>
+<view class="person zhangfei" id="1" style="left: {{wall.x + personPool.persons[1].x * unitLength}}px; top: {{wall.y + personPool.persons[1].y * unitLength}}px; width: {{personPool.persons[1].w * unitLength}}px; height: {{personPool.persons[1].h * unitLength}}px;border: {{border[1]}}rpx solid black;" bindtouchstart='ts' bindtouchmove='tm' bindtouchend='te'>
+</view>
+<view class="person machao" id="2" style="left: {{wall.x + personPool.persons[2].x * unitLength}}px; top: {{wall.y + personPool.persons[2].y * unitLength}}px; width: {{personPool.persons[2].w * unitLength}}px; height: {{personPool.persons[2].h * unitLength}}px;border: {{border[2]}}rpx solid black;" bindtouchstart='ts' bindtouchmove='tm' bindtouchend='te'>
+</view>
+<view class="person huangzhong" id="3" style="left: {{wall.x + personPool.persons[3].x * unitLength}}px; top: {{wall.y + personPool.persons[3].y * unitLength}}px; width: {{personPool.persons[3].w * unitLength}}px; height: {{personPool.persons[3].h * unitLength}}px;border: {{border[3]}}rpx solid black;" bindtouchstart='ts' bindtouchmove='tm' bindtouchend='te'>
+</view>
+<view class="person zhaoyun" id="4" style="left: {{wall.x + personPool.persons[4].x * unitLength}}px; top: {{wall.y + personPool.persons[4].y * unitLength}}px; width: {{personPool.persons[4].w * unitLength}}px; height: {{personPool.persons[4].h * unitLength}}px;border: {{border[4]}}rpx solid black;" bindtouchstart='ts' bindtouchmove='tm' bindtouchend='te'>
+</view>
+<view class="person guanyu" id="5" style="left: {{wall.x + personPool.persons[5].x * unitLength}}px; top: {{wall.y + personPool.persons[5].y * unitLength}}px; width: {{personPool.persons[5].w * unitLength}}px; height: {{personPool.persons[5].h * unitLength}}px;border: {{border[5]}}rpx solid black;" bindtouchstart='ts' bindtouchmove='tm' bindtouchend='te'>
+</view>
+<view class="person footman1" id="6" style="left: {{wall.x + personPool.persons[6].x * unitLength}}px; top: {{wall.y + personPool.persons[6].y * unitLength}}px; width: {{personPool.persons[6].w * unitLength}}px; height: {{personPool.persons[6].h * unitLength}}px;border: {{border[6]}}rpx solid black;" bindtouchstart='ts' bindtouchmove='tm' bindtouchend='te'>
+</view>
+<view class="person footman2" id="7" style="left: {{wall.x + personPool.persons[7].x * unitLength}}px; top: {{wall.y + personPool.persons[7].y * unitLength}}px; width: {{personPool.persons[7].w * unitLength}}px; height: {{personPool.persons[7].h * unitLength}}px;border: {{border[7]}}rpx solid black;" bindtouchstart='ts' bindtouchmove='tm' bindtouchend='te'>
+</view>
+<view class="person footman3" id="8" style="left: {{wall.x + personPool.persons[8].x * unitLength}}px; top: {{wall.y + personPool.persons[8].y * unitLength}}px; width: {{personPool.persons[8].w * unitLength}}px; height: {{personPool.persons[8].h * unitLength}}px;border: {{border[8]}}rpx solid black;" bindtouchstart='ts' bindtouchmove='tm' bindtouchend='te'>
+</view>
+<view class="person footman4" id="9" style="left: {{wall.x + personPool.persons[9].x * unitLength}}px; top: {{wall.y + personPool.persons[9].y * unitLength}}px; width: {{personPool.persons[9].w * unitLength}}px; height: {{personPool.persons[9].h * unitLength}}px;border: {{border[9]}}rpx solid black;" bindtouchstart='ts' bindtouchmove='tm' bindtouchend='te'>
+</view>
