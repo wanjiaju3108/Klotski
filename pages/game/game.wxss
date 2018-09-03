@@ -1,9 +1,15 @@
 /**game.wxss**/
 
+page {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .wall {
   position: absolute;
   border: 10px inset yellow;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 .door {
@@ -11,11 +17,34 @@
   border-bottom: 20px solid white;
 }
 
+.passTip {
+  width: 100%;
+  text-align: center;
+}
+
+.count {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 40px;
+}
+
+.reset {
+  position: fixed;
+  bottom: 0;
+}
+
+.return {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
 .person {
   position: absolute;
   border: 1rpx solid black;
-  box-sizing:border-box;
-  text-align:center;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .caocao {

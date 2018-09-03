@@ -6,15 +6,19 @@ import levelInfo from '../config/config.js'
 
 var canMove = true
 var directions = null
-var level
+var currentLevel
+var count = 0
+var currentPersonX
+var currentPersonY
 Page({
   data: {
     wall: null,
     unitLength: null,
-    unitLength: null,
     caocao: null,
     border: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    isPass: false
+    countText: "步数：0",
+    isPass: false,
+    personPool: null
   },
   sceneInit: function() {
     var zoom = 0.1
@@ -36,54 +40,36 @@ Page({
       unitLength: unitLength
     })
   },
-  gameInit() {
+  gameInit(level) {
     var personPool = new Pool
-    var caocao = new Person
     var unitLength = this.data.unitLength
-    caocao.init(0, 1, 0, 2, 2, unitLength)
-    personPool.addPerson(caocao)
-    var zhangfei = new Person
-    zhangfei.init(0, 0, 0, 1, 2, unitLength)
-    personPool.addPerson(zhangfei)
-    var machao = new Person
-    machao.init(0, 3, 0, 1, 2, unitLength)
-    personPool.addPerson(machao)
-    var huangzhong = new Person
-    huangzhong.init(0, 0, 2, 1, 2, unitLength)
-    personPool.addPerson(huangzhong)
-    var zhaoyun = new Person
-    zhaoyun.init(0, 3, 2, 1, 2, unitLength)
-    personPool.addPerson(zhaoyun)
-    var guanyu = new Person
-    guanyu.init(0, 1, 2, 2, 1, unitLength)
-    personPool.addPerson(guanyu)
-    var footman1 = new Person
-    footman1.init(0, 0, 4, 1, 1, unitLength)
-    personPool.addPerson(footman1)
-    var footman2 = new Person
-    footman2.init(0, 1, 3, 1, 1, unitLength)
-    personPool.addPerson(footman2)
-    var footman3 = new Person
-    footman3.init(0, 2, 3, 1, 1, unitLength)
-    personPool.addPerson(footman3)
-    var footman4 = new Person
-    footman4.init(0, 3, 4, 1, 1, unitLength)
-    personPool.addPerson(footman4)
+    for (var i = 0; i < 10; i++) {
+      var person = new Person
+      currentLevel = level
+      var levelConfig = levelInfo["level" + level][i]
+      person.init(levelConfig[0], levelConfig[1], levelConfig[2], levelConfig[3], levelConfig[4], unitLength)
+      personPool.addPerson(person)
+    }
     this.setData({
       personPool: personPool
     })
   },
   ts: function(e) {
-    var n = e.currentTarget.id
-    var border = this.data.border
-    border[n] = 7
-    this.setData({
-      border: border
-    })
-    this.setDirections(n)
+    if (!this.data.isPass) {
+      var n = e.currentTarget.id
+      var border = this.data.border
+      border[n] = 7
+      this.setData({
+        border: border
+      })
+      this.setDirections(n)
+      var person = this.data.personPool.persons[n]
+      currentPersonX = person.x
+      currentPersonY = person.y
+    }
   },
   tm: function(e) {
-    if (canMove) {
+    if (canMove && !this.data.isPass) {
       var n = e.currentTarget.id
       var unitLength = this.data.unitLength
       var wall = this.data.wall
@@ -137,17 +123,28 @@ Page({
           canMove = true
         }
       }
-      this.checkPass()
     }
   },
   te: function(e) {
-    this.setData({
-      border: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    })
+    if (!this.data.isPass) {
+      this.setData({
+        border: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      })
+      var n = e.currentTarget.id
+      var person = this.data.personPool.persons[n]
+      if (currentPersonX != person.x || currentPersonY != person.y) {
+        count++
+        this.setData({
+          countText: "步数：" + count
+        })
+      }
+      this.checkPass()
+    }
   },
-  onLoad: function() {
+  onLoad: function(option) {
+    var level = option.level
     this.sceneInit()
-    this.gameInit()
+    this.gameInit(level)
   },
   setDirections: function(n) {
     var pool = this.data.personPool
@@ -161,10 +158,17 @@ Page({
       this.setData({
         isPass: true
       })
-      wx.setStorage({
-        key: 'level',
-        data: level + 1,
-      })
     }
+  },
+  reset: function() {
+    this.gameInit(currentLevel)
+    count = 0
+    this.setData({
+      countText: "步数：" + count,
+      isPass: false
+    })
+  },
+  return: function() {
+    wx.navigateBack()
   }
 })

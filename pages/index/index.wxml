@@ -1,2 +1,6 @@
 <!--index.wxml-->
-<button id="1" bindtap='chooseLevel'>横刀立马</button>
+<button class="levelButton" id="1" bindtap='chooseLevel'>横刀立马</button>
+<button class="levelButton" id="2" bindtap='chooseLevel'>巧过五关</button>
+<!-- <button class="levelButton" id="3" bindtap='chooseLevel'>横刀立马</button>
+<button class="levelButton" id="4" bindtap='chooseLevel'>横刀立马</button>
+<button class="levelButton" id="5" bindtap='chooseLevel'>横刀立马</button> -->
